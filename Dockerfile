@@ -40,6 +40,7 @@ RUN apk upgrade --no-cache && \
            /var/tmp/*
     
 ### Volume
+VOLUME ["/etc/ddclient"]
 
 ### Expose ports
 
