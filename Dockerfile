@@ -1,6 +1,5 @@
 # vim:set ft=dockerfile:
-FROM alpine:latest
-MAINTAINER DI GREGORIO Nicolas <nicolas.digregorio@gmail.com>
+FROM babim/alpinebase
 
 ### Environment variables
 ENV LANG='en_US.UTF-8' \
