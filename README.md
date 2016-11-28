@@ -1,3 +1,4 @@
+Thanks digrouz
 # docker-alp-ddclient
 Install ddclient into an Alpine Linux container
 
@@ -18,10 +19,16 @@ https://sourceforge.net/p/ddclient/wiki/Home/
       -e DOCKMAIL=<mail address> \
       -e DOCKRELAY=<smtp relay> \
       -e DOCKMAILDOMAIN=<originating mail domain> \
-      digrouz/docker-alp-ddclient
+      babim/ddclient
       
 ## Environment Variables
-
+```
+DYNUSER
+DYNPASS
+DOMAIN
+DYNMX
+DYNPROTOCOL
+```
 When you start the `ddclient` image, you can adjust the configuration of the `ddclient` instance by passing one or more environment variables on the `docker run` command line.
 
 ### `DOCKUID`
