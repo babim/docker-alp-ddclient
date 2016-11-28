@@ -1,9 +1,37 @@
 #!/bin/sh
 
+# set value
+DYNUSER=${DYNUSER:-mylogin}
+DYNPASS=${DYNPASS:-password}
+DOMAIN=${DOMAIN:-myhost.dyndns.org}
+#DYNMX=${DYNMX:-myhost.dyndns.org}
+DYNPROTOCOL=${DYNPROTOCOL:-dyndns2}
+
 local MYUSER="ddclient"
 local MYGID="10007"
 local MYUID="10007"
 
+# set config
+if [ ! -f "/etc/ddclient/ddclient.conf" ]; then
+cat <<EOF>> /etc/ddclient/ddclient.conf
+# /etc/ddclient/ddclient.conf
+#
+protocol=$DYNPROTOCOL
+use=web
+login=$DYNUSER
+password=$DYNPASS
+$DOMAIN
+EOF
+
+if [[ ! -z "${DYNMX}" ]]; then
+cat <<EOF>> /etc/ddclient/ddclient.conf
+mx=$DYNMX
+EOF
+fi
+
+fi
+
+# run mail, user docker config
 ConfigureSsmtp () {
   # Customizing sstmp
   if [ -f /etc/ssmtp/ssmtp.conf ];then
